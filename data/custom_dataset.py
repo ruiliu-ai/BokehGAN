@@ -35,8 +35,8 @@ class CustomDataset(Pix2pixDataset):
         return parser
 
     def get_paths(self, opt):
-        label_dir = opt.origin_dir
-        label_paths = make_dataset(label_dir, recursive=False, read_cache=True)
+        origin_dir = opt.origin_dir
+        origin_paths = make_dataset(origin_dir, recursive=False, read_cache=True)
 
         if len(opt.image_dir) > 0:
             image_dir = opt.image_dir
@@ -44,18 +44,18 @@ class CustomDataset(Pix2pixDataset):
         else:
             image_paths = []
 
-        if len(opt.instance_dir) > 0:
-            instance_dir = opt.masks_dir
-            instance_paths = make_dataset(instance_dir, recursive=False, read_cache=True)
+        if len(opt.masks_dir) > 0:
+            masks_dir = opt.masks_dir
+            masks_paths = make_dataset(masks_dir, recursive=False, read_cache=True)
         else:
-            instance_paths = []
+            masks_paths = []
 
         if opt.isTrain:
-            assert len(label_paths) == len(image_paths), "The #images in %s and %s do not match. Is there something wrong?"
+            assert len(origin_paths) == len(image_paths), "The #images in %s and %s do not match. Is there something wrong?"
             mask_dir = opt.mask_dir
             mask_paths = make_dataset(mask_dir, recursive=False, read_cache=True)
 
-            return label_paths, image_paths, instance_paths, mask_paths
+            return origin_paths, image_paths, masks_paths, mask_paths
 
         else:
-            return label_paths, image_paths, instance_paths
+            return origin_paths, image_paths, masks_paths
