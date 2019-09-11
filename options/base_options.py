@@ -35,12 +35,12 @@ class BaseOptions():
         parser.add_argument('--load_size', type=int, default=1024, help='Scale images to this size. The final image will be cropped to --crop_size.')
         parser.add_argument('--crop_size', type=int, default=1024, help='Crop to the width of crop_size (after initially scaling the images to load_size.)')
         parser.add_argument('--aspect_ratio', type=float, default=1.0, help='The ratio width/height. The final height of the load image will be crop_size/aspect_ratio')
-        parser.add_argument('--label_nc', type=int, default=182, help='# of input label classes without unknown class. If you have unknown class as class label, specify --contain_dopntcare_label.')
+        parser.add_argument('--label_nc', type=int, default=0, help='# of input label classes without unknown class. If you have unknown class as class label, specify --contain_dopntcare_label.')
         parser.add_argument('--contain_dontcare_label', action='store_true', help='if the label map contains dontcare label (dontcare=255)')
         parser.add_argument('--output_nc', type=int, default=4, help='# of output image channels')
 
         # for setting inputs
-        parser.add_argument('--dataroot', type=str, default='./datasets/cityscapes/')
+        parser.add_argument('--dataroot', type=str, default='')
         parser.add_argument('--dataset_mode', type=str, default='coco')
         parser.add_argument('--serial_batches', action='store_true', help='if true, takes images in order to make batches, otherwise takes them randomly')
         parser.add_argument('--no_flip', action='store_true', help='if specified, do not flip the images for data argumentation')

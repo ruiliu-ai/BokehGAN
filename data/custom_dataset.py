@@ -27,21 +27,15 @@ class CustomDataset(Pix2pixDataset):
             parser.set_defaults(load_size=load_size)
             parser.set_defaults(crop_size=load_size)
             parser.set_defaults(display_winsize=load_size)
-        #parser.set_defaults(label_nc=13)
-        #parser.set_defaults(contain_dontcare_label=False)
 
-        parser.add_argument('--label_dir', type=str, required=True,
-                            help='path to the directory that contains label images')
-        parser.add_argument('--image_dir', type=str, default='',
-                            help='path to the directory that contains photo images')
-        parser.add_argument('--instance_dir', type=str, default='',
-                            help='path to the directory that contains instance maps. Leave black if not exists')
-        parser.add_argument('--mask_dir', type=str, default='',
-                            help='path to the directory that contains instance maps. Leave black if not exists')
+        parser.add_argument('--origin_dir', type=str, required=True)
+        parser.add_argument('--image_dir', type=str, default='')
+        parser.add_argument('--masks_dir', type=str, default='')
+        parser.add_argument('--mask_dir', type=str, default='')
         return parser
 
     def get_paths(self, opt):
-        label_dir = opt.label_dir
+        label_dir = opt.origin_dir
         label_paths = make_dataset(label_dir, recursive=False, read_cache=True)
 
         if len(opt.image_dir) > 0:
@@ -51,7 +45,7 @@ class CustomDataset(Pix2pixDataset):
             image_paths = []
 
         if len(opt.instance_dir) > 0:
-            instance_dir = opt.instance_dir
+            instance_dir = opt.masks_dir
             instance_paths = make_dataset(instance_dir, recursive=False, read_cache=True)
         else:
             instance_paths = []
