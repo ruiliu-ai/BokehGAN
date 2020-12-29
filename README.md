@@ -22,7 +22,7 @@ python generate.py --name bokeh_saliency --which_epoch 350 --dataset_mode custom
 
 Citation
 ======
-If you find MSGAN useful in your research, please consider citing:
+If you find this project useful in your research, please consider citing:
 ```
 @INPROCEEDINGS{9022578,
   author={A. {Ignatov} and J. {Patel} and R. {Timofte} and B. {Zheng} and X. {Ye} and L. {Huang} and X. {Tian} and S. {Dutta} and K. {Purohit} and P. {Kandula} and M. {Suin} and A. N. {Rajagopalan} and Z. {Xiong} and J. {Huang} and G. {Dong} and M. {Yao} and D. {Liu} and M. {Hong} and W. {Lin} and Y. {Qu} and J. {Choi} and W. {Park} and M. {Kim} and R. {Liu} and X. {Mao} and C. {Yang} and Q. {Yan} and W. {Sun} and J. {Fang} and M. {Shang} and F. {Gao} and S. {Ghosh} and P. K. {Sharma} and A. {Sur} and W. {Yang}},
